@@ -1,7 +1,14 @@
+import React, { useState } from 'react';
 import mainLogo from '../assets/mainlogo.png';
-import backgroundGif from '../assets/background.gif'; 
+import GifButton from './GifButton'; // Import the GifButton component
 
 const Header = () => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const handleGifClick = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
     <header
       className="fixed top-0 left-0 right-0 w-full text-white p-6"
@@ -12,17 +19,15 @@ const Header = () => {
     >
       <div className="flex items-center relative h-18">
         <div className="mr-4 ml-5">
-          <div className="w-14 h-14 rounded-full overflow-hidden">
-            <img src={mainLogo} alt="Logo" className="w-full h-full object-contain" />
+          <div className="w-14 h-14 rounded-full overflow-hidden border border-gray-200 p-2">
+            <img src={mainLogo} alt="Logo" className="w-full h-full object-contain" style={{ filter: 'brightness(0) invert(0.9)' }} />
           </div>
         </div>
         <div>
-          <p className="text-left text-2xl font-light">J David P</p>
-          <p className="text-left text-lg italic">Computer Engineer</p>
+          <p className="text-left text-2xl font-light">Test</p>
+          <p className="text-left text-lg italic">Website in Progress</p>
         </div>
-        <div className="absolute right-0 top-0 h-full flex items-center pr-6">
-          <img src={backgroundGif} alt="Background GIF" className="h-full object-contain" />
-        </div>
+        <GifButton isExpanded={isExpanded} handleGifClick={handleGifClick} />
       </div>
     </header>
   );
