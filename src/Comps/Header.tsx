@@ -1,5 +1,5 @@
 import mainLogo from '../assets/mainlogo.png';
-import backgroundGif from '../assets/background.gif'; // Import your GIF
+import backgroundGif from '../assets/background.gif'; 
 
 const Header = () => {
   return (
@@ -10,7 +10,7 @@ const Header = () => {
         backgroundBlendMode: 'overlay',
       }}
     >
-      <div className="flex items-center relative h-18"> {/* Adjust the height as needed */}
+      <div className="flex items-center relative h-18">
         <div className="mr-4 ml-5">
           <div className="w-14 h-14 rounded-full overflow-hidden">
             <img src={mainLogo} alt="Logo" className="w-full h-full object-contain" />
