@@ -142,41 +142,40 @@ const GifButton: React.FC<GifButtonProps> = ({ isExpanded, handleGifClick }) => 
 
   return (
     <div
-      onAnimationEnd={() => setWobble(false)}
-      className={`fixed right-10 top-15 -mt-3 transform transition-transform duration-1000 ${
-        wobble ? (scrollDirection === 'down' ? 'animate-wobble-up' : 'animate-wobble-down') : ''
-      }`}
-
-      style={!wobble ? { transform: `translateY(${totalOffset}px)` } : {}}
+  onAnimationEnd={() => setWobble(false)}
+  className={`fixed right-[3vh] top-[3vh] transform transition-transform duration-1000 ${
+    wobble ? (scrollDirection === 'down' ? 'animate-wobble-up' : 'animate-wobble-down') : ''
+  }`}
+  style={!wobble ? { transform: `translateY(${totalOffset}px)` } : {}}
+>
+  <div className="relative">
+    <div
+      className={`flex items-center gap-[1vh] text-white p-[1vh] transition-opacity duration-500 ${
+        showExtension ? 'opacity-100' : 'opacity-0'
+      } absolute`}
+      style={{ right: '100%', marginRight: '1vh' }}
     >
-      <div className="relative">
-      <div
-          className={`flex items-center gap-4 text-white p-2 transition-opacity duration-500 ${
-            showExtension ? 'opacity-100' : 'opacity-0'
-          } absolute`}
-          style={{ right: '100%', marginRight: '15px' }}
-        >
-          {icons.map((icon, index) => (
-            <button
-              key={index}
-              onClick={() => handleSunMoonToggle(index)}
-              className={`bg-gradient-to-r from-[#c6daff] to-[#88B1FF] text-white rounded-full w-20 h-20 flex items-center justify-center 
+      {icons.map((icon, index) => (
+        <button
+          key={index}
+          onClick={() => handleSunMoonToggle(index)}
+          className={`bg-gradient-to-r from-[#bbd3ff] to-[#88B1FF] text-white rounded-full h-[8vh] w-[8vw] flex items-center justify-center 
                 transition-all duration-500 border border-gray-200 hover:scale-110  ${
-                buttonVisibility[index] ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
-              }`}
-            >
-              <img src={icon} alt={`Icon ${index + 1}`} className="w-12 h-12 object-contain" />
-            </button>
-          ))}
-        </div>
-        <div 
-          className="w-24 h-24 rounded-full overflow-hidden bg-[#88B1FF] flex items-center justify-center"
-          onClick={handleClick}
+            buttonVisibility[index] ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
+          }`}
         >
-          <img src={backgroundGif} alt="Background GIF" className="w-20 h-20 object-contain cursor-pointer" />
-        </div>
-      </div>
+          <img src={icon} alt={`Icon ${index + 1}`} className="w-[3vh] h-[3vh] object-contain" />
+        </button>
+      ))}
     </div>
+    <div 
+      className="w-[10vh] h-[10vh] rounded-full overflow-hidden bg-[#88B1FF] flex items-center justify-center"
+      onClick={handleClick}
+    >
+      <img src={backgroundGif} alt="Background GIF" className="w-[4vh] h-[4vh] object-contain cursor-pointer" />
+    </div>
+  </div>
+</div>
   );
 };
 
