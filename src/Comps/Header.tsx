@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import mainLogo from '../assets/mainlogo.png';
-import GifButton from './GifButton'; // Import the GifButton component
+import GifButton from './GifButton'; 
 
 const Header = () => {
   const [isExpanded, setIsExpanded] = useState(false);
