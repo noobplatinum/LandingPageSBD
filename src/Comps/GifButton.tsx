@@ -150,7 +150,7 @@ const GifButton: React.FC<GifButtonProps> = ({ isExpanded, handleGifClick }) => 
       style={!wobble ? { transform: `translateY(${totalOffset}px)` } : {}}
     >
       <div className="relative">
-        <div
+      <div
           className={`flex items-center gap-4 text-white p-2 transition-opacity duration-500 ${
             showExtension ? 'opacity-100' : 'opacity-0'
           } absolute`}
@@ -161,7 +161,7 @@ const GifButton: React.FC<GifButtonProps> = ({ isExpanded, handleGifClick }) => 
               key={index}
               onClick={() => handleSunMoonToggle(index)}
               className={`bg-gradient-to-r from-[#c6daff] to-[#88B1FF] text-white rounded-full w-20 h-20 flex items-center justify-center 
-                transition-all duration-500 border border-gray-200 ${
+                transition-all duration-500 border border-gray-200 hover:scale-110  ${
                 buttonVisibility[index] ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
               }`}
             >
