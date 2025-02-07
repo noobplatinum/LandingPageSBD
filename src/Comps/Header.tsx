@@ -11,16 +11,24 @@ const Header = () => {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 w-full text-white p-6"
-      style={{
-        backgroundImage: `linear-gradient(to right, rgb(157, 71, 255), #88b1ff, #88b1ff)`,
-        backgroundBlendMode: 'overlay',
-      }}
-    >
+  className="text-white p-8 z-50"
+  style={{
+    width: "100vw",
+    marginLeft: "calc(50% - 50vw)",
+    backgroundImage: `linear-gradient(to right, rgb(157, 71, 255), #88b1ff, #88b1ff)`,
+    backgroundBlendMode: 'overlay',
+    marginTop: 0,
+  }}
+>
       <div className="flex items-center relative h-18">
         <div className="mr-4 ml-5">
           <div className="w-14 h-14 rounded-full overflow-hidden border border-gray-200 p-2">
-            <img src={mainLogo} alt="Logo" className="w-full h-full object-contain" style={{ filter: 'brightness(0) invert(0.9)' }} />
+            <img
+              src={mainLogo}
+              alt="Logo"
+              className="w-full h-full object-contain"
+              style={{ filter: 'brightness(0) invert(0.9)' }}
+            />
           </div>
         </div>
         <div>
