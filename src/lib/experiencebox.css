@@ -1,0 +1,241 @@
+.experience-box {
+    position: relative;
+    width: 100%;
+    min-height: 450px;
+    border-radius: 16px;
+    padding: 2.5rem;
+    backdrop-filter: blur(8px);
+    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out, background-color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+    overflow: hidden;
+    box-sizing: border-box;
+    transform-style: preserve-3d;
+    border: 1px solid;
+  }
+  
+  .experience-box.box-hidden {
+    opacity: 0 !important;
+    transform: translateY(40px) !important;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out !important;
+  }
+  
+  .experience-box.box-visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out !important;
+    will-change: opacity, transform;
+  }
+  
+  .light-box {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(148, 105, 190, 0.3);
+    box-shadow: 
+      0 0 15px rgba(148, 105, 190, 0.2);
+    color: #333;
+  }
+  
+  .dark-box {
+    background-color: rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 193, 7, 0.3); 
+    box-shadow: 
+      0 0 15px rgba(255, 193, 7, 0.2);
+    color: #f1f1f1;
+  }
+  
+  .experience-content {
+    position: relative;
+    z-index: 2;
+  }
+  
+  /* Style for the title - centered */
+  .experience-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+    transition: color 0.8s ease-in-out;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Divider container centered */
+  .divider-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+  
+  .experience-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    transition: color 0.8s ease-in-out;
+  }
+  
+  .theme-transition-text {
+    transition: color 0.8s ease-in-out;
+  }
+    
+  /* For Tailwind amber color in dark mode */
+  .dark-mode-text {
+    color: #fcd34d; /* Tailwind's amber-300 */
+  }
+    
+  /* For Tailwind purple color in light mode */
+  .light-mode-text {
+    color: #9333ea; /* Tailwind's purple-600 */
+  }
+  
+  /* Meteor image styling */
+  .meteor-container {
+    position: absolute;
+    bottom: 50px;
+    left: -40px; /* Changed to left */
+    width: 360px;
+    height: 360px;
+    z-index: 1;
+    transition: opacity 0.8s ease-in-out;
+    transform: rotate(180deg); /* Flip the meteor to point bottom-left */
+  }
+  
+  .meteor-image {
+    width: 100%;
+    height: auto;
+  }
+  
+  .meteor-hidden {
+    opacity: 0 !important;
+  }
+  
+  .meteor-visible {
+    transition-delay: 0.4s;
+  }
+  
+  /* CV section styling */
+  .cv-container {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 10;
+    transition: all 0.5s ease;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  .cv-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition-delay: 0.7s;
+  }
+  
+  .cv-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .cv-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.5s ease;
+  }
+  
+  .dark-box .cv-text {
+    color: #fcd34d; /* amber-300 to match the theme */
+  }
+  
+  .light-box .cv-text {
+    color: #9333ea; /* purple-600 to match the theme */
+  }
+  
+  .cv-button {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid;
+    backdrop-filter: blur(5px);
+  }
+  
+  .light-cv-button {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(148, 105, 190, 0.4);
+    color: #9333ea;
+    box-shadow: 0 2px 10px rgba(148, 105, 190, 0.3);
+  }
+  
+  .dark-cv-button {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 193, 7, 0.4);
+    color: #fcd34d;
+    box-shadow: 0 2px 10px rgba(255, 193, 7, 0.3);
+  }
+  
+  .cv-button:hover {
+    transform: translateY(-2px) scale(1.05);
+  }
+  
+  .light-cv-button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(148, 105, 190, 0.4);
+  }
+  
+  .dark-cv-button:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+  }
+  
+  /* Animation states */
+  .box-hidden {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  
+  .box-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .experience-box {
+      min-height: 350px;
+      padding: 1.5rem;
+    }
+    
+    .experience-title {
+      font-size: 2rem;
+    }
+    
+    .meteor-container {
+      width: 200px;
+      height: 200px;
+      bottom: -50px;
+      left: -50px;
+    }
+    
+    .cv-container {
+      flex-direction: column-reverse;
+      align-items: flex-end;
+      gap: 5px;
+    }
+    
+    .cv-text {
+      font-size: 0.9rem;
+    }
+    
+    .cv-button {
+      width: 45px;
+      height: 45px;
+    }
+  }

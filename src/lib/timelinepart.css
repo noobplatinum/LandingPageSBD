@@ -1,0 +1,250 @@
+.timeline-part {
+    position: relative;
+    padding: 4rem 0;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  
+  .numeral-circle {
+    position: relative;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    overflow: hidden;
+    isolation: isolate; /* Create a stacking context */
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .numeral-circle::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #9333ea, #a855f7, #c084fc);
+    z-index: -1;
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+  }
+  
+  /* Dark theme gradient (overlay) */
+  .numeral-circle::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #f59e0b, #fbbf24, #fcd34d);
+    z-index: -1;
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+  }
+
+  .dark .numeral-circle::before {
+    opacity: 0;
+  }
+  
+  .dark .numeral-circle::after {
+    opacity: 1;
+  }
+
+  .circle-inactive {
+    filter: grayscale(70%) brightness(0.7);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    /* Use the same cubic-bezier for smoother start */
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .circle-inactive::before,
+  .circle-inactive::after {
+    filter: grayscale(70%) brightness(0.7);
+    /* Use the same cubic-bezier for smoother start */
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .circle-active {
+    filter: grayscale(0%) brightness(1);
+    box-shadow: 0 0 25px rgba(147, 51, 234, 0.5);
+    /* Use the same cubic-bezier for smoother start */
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .circle-active::before,
+  .circle-active::after {
+    filter: grayscale(0%) brightness(1);
+    /* Use the same cubic-bezier for smoother start */
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .circle-visible {
+    transform: scale(1);
+    opacity: 1;
+  }
+  
+  .circle-hidden {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  
+  .light-gradient {
+    background: linear-gradient(135deg, #9333ea, #a855f7, #c084fc);
+    box-shadow: 0 0 25px rgba(147, 51, 234, 0.5);
+    transition: background 0.8s cubic-bezier(0.4, 0.0, 0.2, 1), 
+                box-shadow 0.8s cubic-bezier(0.4, 0.0, 0.2, 1), 
+                filter 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+  
+  /* Active state - dark mode */
+  .dark-gradient {
+    background: linear-gradient(135deg, #f59e0b, #fbbf24, #fcd34d);
+    box-shadow: 0 0 25px rgba(245, 158, 11, 0.5);
+    transition: background 0.8s cubic-bezier(0.4, 0.0, 0.2, 1), 
+                box-shadow 0.8s cubic-bezier(0.4, 0.0, 0.2, 1), 
+                filter 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+  
+  .dark .circle-active {
+    box-shadow: 0 0 25px rgba(251, 191, 36, 0.6);
+    /* Use the same cubic-bezier for smoother start */
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .roman-numeral {
+    font-size: 5rem; /* Increased from 4.5rem */
+    font-weight: bold;
+    color: white;
+    margin-bottom: 0.5rem;
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .part-subtitle {
+    font-size: 1.5rem; /* Adjusted from 4rem which was too large */
+    font-weight: 500;
+    color: white;
+    opacity: 0.9;
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .categories-container {
+    position: relative;
+    padding-left: 3rem;
+    margin-top: 6rem; /* Increased margin for larger circle */
+  }
+  
+  .timeline-part::after {
+    content: '';
+    position: absolute;
+    left: calc(50% - 1px);
+    top: 302px;
+    width: 2px;
+    height: calc(100% - 302px);
+    z-index: 1;
+    opacity: 0; 
+    pointer-events: none;
+  }
+
+  .timeline-part::after {
+    background: linear-gradient(to bottom, 
+      rgba(147, 51, 234, 0.8) 0%,
+      rgba(147, 51, 234, 0.2) 90%,
+      transparent 100%);
+  }
+
+  .timeline-part::before {
+    content: '';
+    position: absolute;
+    left: calc(50% - 1px);
+    top: 302px;
+    width: 2px;
+    height: calc(100% - 302px);
+    background: linear-gradient(to bottom, 
+      rgba(245, 158, 11, 0.8) 0%,
+      rgba(245, 158, 11, 0.2) 90%,
+      transparent 100%);
+    z-index: 1;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .timeline-part::after,
+  .timeline-part::before {
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+  /* Reduced delay from 0.5s to 0.3s for better connection with circle animation */
+  }
+
+  /* Show line when circle is active - both themes */
+  .timeline-part:has(.circle-active)::after {
+    opacity: 1;
+  }
+
+  .timeline-part:has(.circle-active)::before {
+    opacity: 0; /* Hidden in light mode */
+  }
+
+  /* Dark theme transitions */
+  .dark .timeline-part:has(.circle-active)::after {
+    opacity: 0; /* Hide light theme line */
+  }
+
+  .dark .timeline-part:has(.circle-active)::before {
+    opacity: 1; /* Show dark theme line */
+  }
+
+  /* Hide both lines for last child */
+  .timeline-part:last-child::after,
+  .timeline-part:last-child::before {
+    display: none;
+  }
+
+  
+  /* Custom @property registration for CSS variables to enable transitions */
+  @property --timeline-line-start-color {
+    syntax: '<color>';
+    initial-value: rgba(147, 51, 234, 0.8);
+    inherits: true;
+  }
+  
+  @property --timeline-line-end-color {
+    syntax: '<color>';
+    initial-value: rgba(147, 51, 234, 0.2);
+    inherits: true;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .numeral-circle {
+      width: 200px; /* Reduced but still larger than original */
+      height: 200px;
+      margin-bottom: 3rem;
+    }
+    
+    .roman-numeral {
+      font-size: 4rem;
+    }
+    
+    .part-subtitle {
+      font-size: 1.25rem;
+    }
+    
+    .categories-container {
+      margin-top: 4rem;
+    }
+  
+    .timeline-part::after {
+      top: 220px; /* Adjusted for larger circle on mobile */
+    }
+  }
+
+  .circle-active.light-gradient {
+  background: linear-gradient(135deg, #9333ea, #a855f7, #c084fc);
+  box-shadow: 0 0 25px rgba(147, 51, 234, 0.5);
+  opacity: 1;
+  }
+
+  .circle-active.dark-gradient {
+    background: linear-gradient(135deg, #f59e0b, #fbbf24, #fcd34d);
+    box-shadow: 0 0 25px rgba(245, 158, 11, 0.5);
+    opacity: 1;
+  }

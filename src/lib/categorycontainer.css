@@ -1,0 +1,125 @@
+.category-container {
+    position: relative;
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+  }
+  
+  /* Category title styling */
+  .category-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease, color 0.8s ease-in-out;
+  }
+  
+  .title-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .title-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  /* Timeline entries container */
+  .timeline-entries {
+    position: relative;
+    padding-left: 2rem; /* Space for the vertical line */
+  }
+  
+  /* Timeline entry wrapper to contain both box and connecting line */
+  .timeline-entry-wrapper {
+    position: relative;
+  }
+  
+  .timeline-entry-box {
+    position: relative;
+    z-index: 2; /* Higher z-index to appear above timeline lines */
+    backdrop-filter: blur(8px);
+  }
+
+  .timeline-hover-card {
+    display: block !important;
+    visibility: visible !important; 
+    min-width: 180px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Connecting vertical line between entries */
+  .connecting-line {
+    position: absolute;
+    left: -0.5rem; /* Align with the vertical line of the timeline */
+    top: calc(100% - 1.5rem);
+    width: 2px;
+    height: 0; /* Start at 0 height */
+    transition: height 1s ease, opacity 0.5s ease;
+    opacity: 0;
+  }
+  
+  .line-visible {
+    height: 3rem; /* Expand to connect to the next entry */
+    opacity: 1;
+    transition-delay: 0.3s; /* Delay to start after the entry is visible */
+  }
+  
+  .line-hidden {
+    height: 0;
+    opacity: 0;
+  }
+  
+  /* Line colors for light and dark mode */
+  .dark-line {
+    background-color: rgba(255, 193, 7, 0.7); /* amber color for dark mode */
+    box-shadow: 0 0 8px rgba(255, 193, 7, 0.4);
+  }
+  
+  .light-line {
+    background-color: rgba(148, 105, 190, 0.7); /* purple color for light mode */
+    box-shadow: 0 0 8px rgba(148, 105, 190, 0.4);
+  }
+  
+  /* For positioning in parent timeline */
+  .category-container:first-child .category-title::before {
+    display: none; /* No line above the first category title */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .category-title {
+      font-size: 2rem;
+    }
+    
+    .timeline-entries {
+      padding-left: 1.5rem;
+    }
+  }
+
+  .glow-container {
+    position: relative;
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.2);
+    transition: all 0.6s ease-in-out; /* Smoother transition for all properties */
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .light-glow {
+    box-shadow: 0 0 15px 2px rgba(147, 51, 234, 0.6); /* Purple glow */
+    border: 1px solid rgba(147, 51, 234, 0.4);
+  }
+  
+  .dark-glow {
+    box-shadow: 0 0 15px 2px rgba(234, 179, 8, 0.6); /* Yellow glow */
+    border: 1px solid rgba(234, 179, 8, 0.4);
+  }
+  
+  .timeline-hover-card {
+    display: block !important;
+    visibility: visible !important; 
+    min-width: 120px; /* Reduced minimum width */
+    transition: all 0.6s ease-in-out;
+  }

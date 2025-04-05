@@ -1,0 +1,212 @@
+/* From Uiverse.io by Praashoo7 */ 
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.up {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
+}
+
+.down {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
+}
+
+.card1 {
+  width: 90px;
+  height: 90px;
+  outline: none;
+  border: none;
+  background: white;
+  border-radius: 90px 5px 5px 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  transition: .5s ease-in-out;
+}
+
+.card2 {
+  width: 90px;
+  height: 90px;
+  outline: none;
+  border: none;
+  background: white;
+  border-radius: 5px 90px 5px 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  transition: .5s ease-in-out;
+}
+
+.card3 {
+  width: 90px;
+  height: 90px;
+  outline: none;
+  border: none;
+  background: white;
+  border-radius: 5px 5px 5px 90px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  transition: .5s ease-in-out;
+}
+
+.card4 {
+  width: 90px;
+  height: 90px;
+  outline: none;
+  border: none;
+  background: white;
+  border-radius: 5px 5px 90px 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  transition: .5s ease-in-out;
+}
+
+
+.instagram {
+  margin-top: 1.1em;
+  margin-left: 1.2em;
+  fill: #cc39a4;
+}
+
+.twitter {
+  margin-top: 1.1em;
+  margin-left: 2.2em;
+  fill: #03A9F4;
+}
+
+.github {
+  margin-top: 1.5em;
+  margin-left: 1.1em;
+  fill: #333;
+}
+
+.discord {
+  margin-top: 1.8em;
+  margin-left: 2.4em;
+  fill: #8c9eff;
+}
+
+.card1:hover {
+  cursor: pointer;
+  scale: 1.1;
+  background-color: #cc39a4;
+}
+
+.card1:hover .instagram {
+  fill: white;
+}
+
+.card2:hover {
+  cursor: pointer;
+  scale: 1.1;
+  background-color: #03A9F4;
+}
+
+.card2:hover .twitter {
+  fill: white;
+}
+
+.card3:hover {
+  cursor: pointer;
+  scale: 1.1;
+  background-color: black;
+}
+
+.card3:hover .github {
+  fill: white;
+}
+
+.card4:hover {
+  cursor: pointer;
+  scale: 1.1;
+  background-color: #8c9eff;
+}
+
+.card4:hover .discord {
+  fill: white;
+}
+
+/* Add these dark mode styles at the end of your file */
+
+/* Dark mode button backgrounds */
+.card1.dark-mode,
+.card2.dark-mode,
+.card3.dark-mode,
+.card4.dark-mode {
+  background: #242424;
+  box-shadow: rgba(19, 20, 31, 0.74) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+/* Github icon should be white in dark mode */
+.github.dark-mode-icon {
+  fill: white;
+}
+
+/* Hover effects for dark mode */
+.card1.dark-mode:hover,
+.card2.dark-mode:hover,
+.card3.dark-mode:hover,
+.card4.dark-mode:hover {
+  scale: 1.1;
+}
+
+/* Add these dark mode styles at the end of your file */
+
+/* Dark mode button backgrounds */
+.card1.dark-mode,
+.card2.dark-mode,
+.card3.dark-mode,
+.card4.dark-mode {
+  background: #333;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+/* Github icon should be white in dark mode */
+.github.dark-mode-icon {
+  fill: white;
+}
+
+/* Hover effects for dark mode */
+.card1.dark-mode:hover,
+.card2.dark-mode:hover,
+.card3.dark-mode:hover,
+.card4.dark-mode:hover {
+  scale: 1.1;
+}
+
+.instagram.dark-mode-icon {
+  fill: white;
+}
+
+.twitter.dark-mode-icon {
+  fill: white;
+}
+
+.discord.dark-mode-icon {
+  fill: white;
+}
+
+/* Update dark mode hover styles for inverse effect */
+.card1.dark-mode:hover .instagram,
+.card2.dark-mode:hover .twitter,
+.card3.dark-mode:hover .github,
+.card4.dark-mode:hover .discord {
+  fill: #242424; /* Dark gray color for icons on hover in dark mode */
+}
+
+/* Add specific hover backgrounds for dark mode */
+.card1.dark-mode:hover {
+  background-color: #cc39a4;
+}
+
+.card2.dark-mode:hover {
+  background-color: #03A9F4;
+}
+
+.card3.dark-mode:hover {
+  background-color: rgb(255, 255, 255);
+}
+
+.card4.dark-mode:hover {
+  background-color: #8c9eff;
+}

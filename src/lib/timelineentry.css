@@ -1,0 +1,192 @@
+/* Timeline Entry Box styling */
+.timeline-entry-box {
+    position: relative;
+    width: 100%;
+    min-height: auto;
+    border-radius: 12px;
+    padding: 1.5rem;
+    backdrop-filter: blur(8px);
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out, background-color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+    overflow: hidden;
+    box-sizing: border-box;
+    transform-style: preserve-3d;
+    border: 1px solid;
+    margin-bottom: 1.5rem;
+    z-index: 2;
+
+  }
+  
+  .light-box {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(148, 105, 190, 0.3);
+    box-shadow: 0 0 15px rgba(148, 105, 190, 0.2);
+    color: #333;
+    backdrop-filter: blur(24px);
+    transition: background-color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease, color 0.5s ease;
+  }
+  
+  .dark-box {
+    background-color: rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 193, 7, 0.3); 
+    box-shadow: 0 0 15px rgba(255, 193, 7, 0.2);
+    color: #f1f1f1;
+    backdrop-filter: blur(12px);
+    transition: background-color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease, color 0.5s ease;
+  }
+
+  .compact-box {
+  padding-bottom: 1rem; /* Reduced bottom padding */
+  }
+
+    .compact-box .position-subtitle {
+    margin-bottom: 0; /* No margin when there's no content below */
+    }
+  
+  .timeline-entry-content {
+    position: relative;
+    z-index: 2;
+  }
+  
+  /* Title section with logo */
+  .title-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .org-logo {
+    width: 32px;
+    height: 32px;
+    margin-right: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .logo-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .logo-hidden {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  
+  .org-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .org-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    transition: color 0.5s ease-in-out;
+    margin: 0;
+  }
+  
+  /* Position subtitle */
+  .position-subtitle {
+    font-size: 1.1rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .date-range {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    font-weight: normal;
+  }
+  
+  /* Divider container - left aligned */
+  .timeline-entry-box .divider-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  /* Accomplishments list */
+  .accomplishments-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 1rem;
+  }
+  
+  .accomplishment-item {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  
+  .accomplishment-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: currentColor;
+    opacity: 0.7;
+  }
+  
+  .item-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .item-hidden {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  
+  /* Animation states - more subtle than the main boxes */
+  .timeline-entry-box.box-hidden {
+    opacity: 0.4;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  
+  .timeline-entry-box.box-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out; /* Slightly longer for appearing */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .timeline-entry-box {
+      padding: 1.25rem;
+    }
+    
+    .org-title {
+      font-size: 1.25rem;
+    }
+    
+    .position-subtitle {
+      font-size: 1rem;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .date-range {
+      margin-top: 0.25rem;
+    }
+    
+    .org-logo {
+      width: 28px;
+      height: 28px;
+    }
+  }
