@@ -343,22 +343,7 @@ const Timeline: React.FC = () => {
         romanNumeral="III"
         subtitle="The Beyond"
         categories={[
-          {
-            title: "Future Plans",
-            entries: [
-              {
-                title: "PhD Research",
-                logoUrl: "/logos/research.png",
-                position: "Aspiring Researcher",
-                accomplishments: [
-                  "Pursuing advanced research in AI and robotics integration",
-                  "Working on prototype for adaptive learning systems",
-                  "Planning to publish in top-tier academic journals"
-                ],
-                dateRange: "2024-2028 (Planned)"
-              }
-            ]
-          }
+
         ]}
         isLastPart={true}
       />

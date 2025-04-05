@@ -3,6 +3,7 @@
 import { memo, useCallback, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { animate } from "motion/react";
+import { useTheme } from "@/lib/ThemeContext";
 
 interface GlowingEffectProps {
   blur?: number;
@@ -15,24 +16,29 @@ interface GlowingEffectProps {
   disabled?: boolean;
   movementDuration?: number;
   borderWidth?: number;
+  intensity?: number;
 }
+
 const GlowingEffect = memo(
   ({
     blur = 0,
-    inactiveZone = 0.7,
+    inactiveZone = 0.4,
     proximity = 0,
-    spread = 20,
+    spread = 35,
     variant = "default",
     glow = false,
     className,
-    movementDuration = 2,
-    borderWidth = 1,
+    movementDuration = 1.5,
+    borderWidth = 3,
     disabled = true,
+    intensity = 1.5,
   }: GlowingEffectProps) => {
+    const { darkMode } = useTheme();
     const containerRef = useRef<HTMLDivElement>(null);
     const lastPosition = useRef({ x: 0, y: 0 });
     const animationFrameRef = useRef<number>(0);
 
+    // Keep the existing handleMove function and useEffect from the original component
     const handleMove = useCallback(
       (e?: MouseEvent | { x: number; y: number }) => {
         if (!containerRef.current) return;
@@ -61,7 +67,7 @@ const GlowingEffect = memo(
           const inactiveRadius = 0.5 * Math.min(width, height) * inactiveZone;
 
           if (distanceFromCenter < inactiveRadius) {
-            element.style.setProperty("--active", "0");
+            element.style.setProperty("--active", "0.15"); // Default low glow instead of 0
             return;
           }
 
@@ -71,7 +77,7 @@ const GlowingEffect = memo(
             mouseY > top - proximity &&
             mouseY < top + height + proximity;
 
-          element.style.setProperty("--active", isActive ? "1" : "0");
+          element.style.setProperty("--active", isActive ? "1" : "0.15"); // Default low glow instead of 0
 
           if (!isActive) return;
 
@@ -79,7 +85,7 @@ const GlowingEffect = memo(
             parseFloat(element.style.getPropertyValue("--start")) || 0;
           let targetAngle =
             (180 * Math.atan2(mouseY - center[1], mouseX - center[0])) /
-              Math.PI +
+            Math.PI +
             90;
 
           const angleDiff = ((targetAngle - currentAngle + 180) % 360) - 180;
@@ -103,6 +109,11 @@ const GlowingEffect = memo(
       const handleScroll = () => handleMove();
       const handlePointerMove = (e: PointerEvent) => handleMove(e);
 
+      // Initial glow
+      if (containerRef.current) {
+        containerRef.current.style.setProperty("--active", "0.15");
+      }
+
       window.addEventListener("scroll", handleScroll, { passive: true });
       document.body.addEventListener("pointermove", handlePointerMove, {
         passive: true,
@@ -117,15 +128,33 @@ const GlowingEffect = memo(
       };
     }, [handleMove, disabled]);
 
+    // Define colors based on dark mode with new requested color scheme
+    // Dark mode: Yellow to orange gradient
+    // Light mode: Purple to bright purple gradient
+    const primaryColor = darkMode ? "#FFDD00" : "#9C27B0";
+    const secondaryColor = darkMode ? "#FF9800" : "#E040FB";
+    const primaryColorFade = darkMode ? "#FFDD0030" : "#9C27B030";
+    const secondaryColorFade = darkMode ? "#FF980030" : "#E040FB30";
+
+    // Define static box-shadow for natural glow (similar to experience-box)
+    const staticBoxShadow = darkMode
+      ? "0 0 15px rgba(255, 193, 7, 0.3)"
+      : "0 0 15px rgba(148, 105, 190, 0.3)";
+
     return (
       <>
+        {/* Add a static gradient border similar to experiencebox */}
         <div
           className={cn(
-            "pointer-events-none absolute -inset-px hidden rounded-[inherit] border opacity-0 transition-opacity",
+            "pointer-events-none absolute -inset-px rounded-[inherit] border opacity-100 transition-opacity",
             glow && "opacity-100",
             variant === "white" && "border-white",
             disabled && "!block"
           )}
+          style={{
+            borderColor: darkMode ? "rgba(255, 193, 7, 0.4)" : "rgba(148, 105, 190, 0.4)",
+            boxShadow: staticBoxShadow
+          }}
         />
         <div
           ref={containerRef}
@@ -134,50 +163,58 @@ const GlowingEffect = memo(
               "--blur": `${blur}px`,
               "--spread": spread,
               "--start": "0",
-              "--active": "0",
+              "--active": "0.15", // Default low glow instead of 0
+              "--intensity": intensity,
               "--glowingeffect-border-width": `${borderWidth}px`,
-              "--repeating-conic-gradient-times": "5",
+              "--repeating-conic-gradient-times": "3", // Fewer repeats for bigger color sections
               "--gradient":
                 variant === "white"
-                  ? `repeating-conic-gradient(
-                  from 236.84deg at 50% 50%,
-                  var(--black),
-                  var(--black) calc(25% / var(--repeating-conic-gradient-times))
-                )`
-                  : `radial-gradient(circle, #dd7bbb 10%, #dd7bbb00 20%),
-                radial-gradient(circle at 40% 40%, #d79f1e 5%, #d79f1e00 15%),
-                radial-gradient(circle at 60% 60%, #5a922c 10%, #5a922c00 20%), 
-                radial-gradient(circle at 40% 60%, #4c7894 10%, #4c789400 20%),
-                repeating-conic-gradient(
-                  from 236.84deg at 50% 50%,
-                  #dd7bbb 0%,
-                  #d79f1e calc(25% / var(--repeating-conic-gradient-times)),
-                  #5a922c calc(50% / var(--repeating-conic-gradient-times)), 
-                  #4c7894 calc(75% / var(--repeating-conic-gradient-times)),
-                  #dd7bbb calc(100% / var(--repeating-conic-gradient-times))
-                )`,
+                  ? `
+                    radial-gradient(circle at 50% 50%, ${primaryColor}99, ${primaryColorFade} 70%),
+                    radial-gradient(circle at 45% 45%, ${secondaryColor}99, ${secondaryColorFade} 70%),
+                    repeating-conic-gradient(
+                      from 136.84deg at 50% 50%,
+                      ${primaryColor} 0%,
+                      ${secondaryColor} calc(25% / var(--repeating-conic-gradient-times)),
+                      ${primaryColor} calc(50% / var(--repeating-conic-gradient-times)),
+                      ${secondaryColor} calc(75% / var(--repeating-conic-gradient-times)),
+                      ${primaryColor} calc(100% / var(--repeating-conic-gradient-times))
+                    )
+                  `
+                  : `
+                    radial-gradient(circle at 50% 50%, ${primaryColor}99, ${primaryColorFade} 70%),
+                    radial-gradient(circle at 45% 45%, ${secondaryColor}99, ${secondaryColorFade} 70%),
+                    repeating-conic-gradient(
+                      from 136.84deg at 50% 50%,
+                      ${primaryColor} 0%,
+                      ${secondaryColor} calc(25% / var(--repeating-conic-gradient-times)),
+                      ${primaryColor} calc(50% / var(--repeating-conic-gradient-times)),
+                      ${secondaryColor} calc(75% / var(--repeating-conic-gradient-times)),
+                      ${primaryColor} calc(100% / var(--repeating-conic-gradient-times))
+                    )
+                  `,
             } as React.CSSProperties
           }
           className={cn(
             "pointer-events-none absolute inset-0 rounded-[inherit] opacity-100 transition-opacity",
             glow && "opacity-100",
-            blur > 0 && "blur-[var(--blur)] ",
+            blur > 0 && "blur-[var(--blur)]",
             className,
             disabled && "!hidden"
           )}
-          
         >
           <div
             className={cn(
               "glow",
               "rounded-[inherit]",
-              'after:content-[""] after:rounded-[inherit] after:absolute after:inset-[calc(-1*var(--glowingeffect-border-width))]',
+              'after:content-[""] after:rounded-[inherit] after:absolute after:inset-[calc(-1.0*var(--glowingeffect-border-width))]', // Reduced inset to make glow closer
               "after:[border:var(--glowingeffect-border-width)_solid_transparent]",
               "after:[background:var(--gradient)] after:[background-attachment:fixed]",
-              "after:opacity-[var(--active)] after:transition-opacity after:duration-300",
+              "after:opacity-[var(--active)] after:transition-opacity after:duration-200", // Faster transition
               "after:[mask-clip:padding-box,border-box]",
               "after:[mask-composite:intersect]",
-              "after:[mask-image:linear-gradient(#0000,#0000),conic-gradient(from_calc((var(--start)-var(--spread))*1deg),#00000000_0deg,#fff,#00000000_calc(var(--spread)*2deg))]"
+              "after:[filter:brightness(calc(100%*var(--intensity)))]", // Brightness boost
+              "after:[mask-image:linear-gradient(#0000,#0000),conic-gradient(from_calc((var(--start)-var(--spread))*1deg),#00000000_0deg,#fff,#00000000_calc(var(--spread)*2.5deg))]" // Wider mask
             )}
           />
         </div>

@@ -17,79 +17,69 @@
   gap: 0.5em;
 }
 
-.card1 {
+.card1, .card2, .card3, .card4 {
   width: 90px;
   height: 90px;
   outline: none;
   border: none;
-  background: white;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: rgba(50, 50, 93, 0.15) 0px 2px 5px -1px, rgba(0, 0, 0, 0.2) 0px 1px 3px -1px;
+  transition: all 0.2s ease-in-out;
+}
+
+.card1 {
   border-radius: 90px 5px 5px 5px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  transition: .5s ease-in-out;
 }
 
 .card2 {
-  width: 90px;
-  height: 90px;
-  outline: none;
-  border: none;
-  background: white;
   border-radius: 5px 90px 5px 5px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  transition: .5s ease-in-out;
 }
 
 .card3 {
-  width: 90px;
-  height: 90px;
-  outline: none;
-  border: none;
-  background: white;
   border-radius: 5px 5px 5px 90px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  transition: .5s ease-in-out;
 }
 
 .card4 {
-  width: 90px;
-  height: 90px;
-  outline: none;
-  border: none;
-  background: white;
   border-radius: 5px 5px 90px 5px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  transition: .5s ease-in-out;
 }
-
 
 .instagram {
   margin-top: 1.1em;
   margin-left: 1.2em;
   fill: #cc39a4;
+  transition: fill 0.3s ease-in-out;
 }
 
 .twitter {
   margin-top: 1.1em;
   margin-left: 2.2em;
   fill: #03A9F4;
+  transition: fill 0.3s ease-in-out;
 }
 
 .github {
   margin-top: 1.5em;
   margin-left: 1.1em;
   fill: #333;
+  transition: fill 0.3s ease-in-out;
 }
 
 .discord {
   margin-top: 1.8em;
   margin-left: 2.4em;
   fill: #8c9eff;
+  transition: fill 0.3s ease-in-out;
 }
 
 .card1:hover {
   cursor: pointer;
   scale: 1.1;
-  background-color: #cc39a4;
+  background-color: rgba(204, 57, 164, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .card1:hover .instagram {
@@ -99,7 +89,9 @@
 .card2:hover {
   cursor: pointer;
   scale: 1.1;
-  background-color: #03A9F4;
+  background-color: rgba(3, 169, 244, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .card2:hover .twitter {
@@ -109,8 +101,11 @@
 .card3:hover {
   cursor: pointer;
   scale: 1.1;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
+
 
 .card3:hover .github {
   fill: white;
@@ -119,59 +114,30 @@
 .card4:hover {
   cursor: pointer;
   scale: 1.1;
-  background-color: #8c9eff;
+  background-color: rgba(140, 158, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .card4:hover .discord {
   fill: white;
 }
 
-/* Add these dark mode styles at the end of your file */
-
-/* Dark mode button backgrounds */
+/* Dark mode styles with transparent backgrounds */
 .card1.dark-mode,
 .card2.dark-mode,
 .card3.dark-mode,
 .card4.dark-mode {
-  background: #242424;
-  box-shadow: rgba(19, 20, 31, 0.74) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  background: rgba(36, 36, 36, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 5px -1px, rgba(0, 0, 0, 0.2) 0px 1px 3px -1px;
 }
 
 /* Github icon should be white in dark mode */
 .github.dark-mode-icon {
   fill: white;
-}
-
-/* Hover effects for dark mode */
-.card1.dark-mode:hover,
-.card2.dark-mode:hover,
-.card3.dark-mode:hover,
-.card4.dark-mode:hover {
-  scale: 1.1;
-}
-
-/* Add these dark mode styles at the end of your file */
-
-/* Dark mode button backgrounds */
-.card1.dark-mode,
-.card2.dark-mode,
-.card3.dark-mode,
-.card4.dark-mode {
-  background: #333;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-}
-
-/* Github icon should be white in dark mode */
-.github.dark-mode-icon {
-  fill: white;
-}
-
-/* Hover effects for dark mode */
-.card1.dark-mode:hover,
-.card2.dark-mode:hover,
-.card3.dark-mode:hover,
-.card4.dark-mode:hover {
-  scale: 1.1;
 }
 
 .instagram.dark-mode-icon {
@@ -186,6 +152,16 @@
   fill: white;
 }
 
+/* Hover effects for dark mode */
+.card1.dark-mode:hover,
+.card2.dark-mode:hover,
+.card3.dark-mode:hover,
+.card4.dark-mode:hover {
+  scale: 1.1;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
 /* Update dark mode hover styles for inverse effect */
 .card1.dark-mode:hover .instagram,
 .card2.dark-mode:hover .twitter,
@@ -194,19 +170,18 @@
   fill: #242424; /* Dark gray color for icons on hover in dark mode */
 }
 
-/* Add specific hover backgrounds for dark mode */
 .card1.dark-mode:hover {
-  background-color: #cc39a4;
+  background-color: rgba(204, 57, 164, 0.7);
 }
 
 .card2.dark-mode:hover {
-  background-color: #03A9F4;
+  background-color: rgba(3, 169, 244, 0.7);
 }
 
 .card3.dark-mode:hover {
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 .card4.dark-mode:hover {
-  background-color: #8c9eff;
+  background-color: rgba(140, 158, 255, 0.7);
 }
