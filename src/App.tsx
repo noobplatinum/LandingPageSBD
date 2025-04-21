@@ -12,7 +12,7 @@ import Timeline from './Comps/Timeline';
 import ProjectsBox from './Comps/ProjectBox';
 import TechStack from './Comps/TechBox';
 import GlobeImplementation from './components/ui/GlobeImplementation';
-import SocialButtons from './components/ui/SocialButton';
+import Footer from './Comps/Footer';
 
 const AppContent = () => {
   const { darkMode } = useTheme();
@@ -57,7 +57,6 @@ const AppContent = () => {
             <div className="md:w-[40%] flex justify-center">
               <Profile />
             </div>
-
           </div>
 
           <div className="w-[90vw] max-w-7xl mt-[6vh] flex flex-col md:flex-row justify-center items-center gap-8">
@@ -72,15 +71,14 @@ const AppContent = () => {
           </div>
 
           <div className="w-[70vw] flex justify-center items-center mt-[6vh]">
-            {/* Timeline section */}
             <div className="w-[85vw] max-w-7xl mt-[12vh] mb-[6vh]">
               <h2 className={`text-4xl font-bold text-center mb-8 ${darkMode ? 'text-white' : 'text-gray-800'}`}>              My Journey
               </h2>
               <Timeline />
               <GlobeImplementation/>
-
             </div>
           </div>
+
           <div className="w-[90vw] max-w-7xl mt-[6vh] flex flex-col justify-center items-center gap-8">
             <h2 className={`text-4xl font-bold text-center mb-8 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
               My Projects
@@ -88,23 +86,24 @@ const AppContent = () => {
             <ProjectsBox />
           </div>
 
-          <div className="w-[90vw] max-w-7xl mt-[6vh] flex flex-col justify-center items-center gap-8">
-            <h2 className={`text-4xl font-bold text-center mb-8 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
-              Connect With Me
-            </h2>
-            <SocialButtons className="mb-8" />
+          <div className='h-[100px]'></div>
+          <TechStack />
+          <div className='h-[100px]'></div>
+
+          <div className="w-[90vw] max-w-7xl flex flex-col md:flex-row justify-center items-center gap-0">
+            <div className="md:w-[90%]">
+              <Footer />
+            </div>
           </div>
 
-          <TechStack />
+          <div className="h-[100px]"></div>
 
-          <div className="w-full h-[1000px]"></div>
         </main>
       </div>
     </AuroraBackground>
   );
 };
 
-// Root App component with Theme Provider
 function App() {
   return (
     <ThemeProvider>

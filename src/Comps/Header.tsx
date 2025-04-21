@@ -1,54 +1,31 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import mainLogo from '../assets/mainlogo.png';
-import vectorImage from '../assets/SZBase.svg';
 import GifButton from './GifButton';
 import { BackgroundGradient } from "../components/ui/background-gradient";
 import { useTheme } from '../lib/ThemeContext';
 
 const Header = () => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [vectorLoaded, setVectorLoaded] = useState(false);
-  const vectorRef = useRef(null);
-  // Destructure darkMode and toggleDarkMode from the useTheme hook
   const { darkMode, toggleDarkMode } = useTheme();
   const [themeTransition, setThemeTransition] = useState(false);
 
-  // Handle theme transition effects
   useEffect(() => {
     setThemeTransition(true);
     const timer = setTimeout(() => setThemeTransition(false), 800);
     return () => clearTimeout(timer);
   }, [darkMode]);
 
-  // Handle SVG loading correctly
-  useEffect(() => {
-    // Try to use the actual SVG as an img element instead of background
-    const img = new Image();
-    img.onload = () => setVectorLoaded(true);
-    img.onerror = (error) => console.error("Failed to load vector image:", error);
-    img.src = vectorImage;
-
-    // As a fallback, let's also try to load it with fetch 
-    fetch(vectorImage)
-      .then(response => {
-        if (!response.ok) throw new Error('Network response was not ok');
-        return response.blob();
-      })
-      .then(() => setVectorLoaded(true))
-      .catch(error => console.error("Error loading vector:", error));
-  }, []);
-
   const handleGifClick = () => {
     setIsExpanded(!isExpanded);
   };
 
-  // Logo color filter based on theme
   const logoFilter = darkMode
     ? 'brightness(0) saturate(100%) invert(80%) sepia(50%) saturate(500%) hue-rotate(345deg) brightness(205%) contrast(95%) opacity(0.85)'  // Solid amber/gold in dark mode
     : 'brightness(0) saturate(100%) invert(30%) sepia(90%) saturate(900%) hue-rotate(240deg) brightness(70%) contrast(90%) opacity(0.65)'; // Solid purple in light mode
 
-  // SVG background opacity based on theme
-  const svgOpacity = darkMode ? 0.15 : 0.3;
+  const glowColor = darkMode 
+    ? 'rgba(255, 180, 10, 0.85)'
+    : 'rgba(128, 0, 255, 0.85)'; 
 
   return (
     <header
@@ -60,22 +37,20 @@ const Header = () => {
         backgroundColor: 'transparent'
       }}
     >
-      {vectorLoaded && (
-        <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
-          <img
-            ref={vectorRef}
-            src={vectorImage}
-            alt="Header background"
-            className="h-full pointer-events-none transition-opacity duration-700 ease-in-out"
-            style={{
-              width: '80vw',
-              objectFit: 'contain',
-              opacity: svgOpacity,
-              transition: 'opacity 0.8s cubic-bezier(0.4, 0.0, 0.2, 1)'
-            }}
-          />
-        </div>
-      )}
+      <div className="absolute inset-0 flex justify-center items-end pointer-events-none"> {/* Changed to items-end */}
+        <div 
+          className="transition-all duration-700 ease-in-out"
+          style={{
+            width: '56vw',
+            height: '2px', // Set to thickness of border line
+            borderTop: `2px solid ${darkMode ? 'rgba(255, 175, 0, 0.8)' : 'rgba(128, 0, 255, 0.8)'}`, // Only top border (which appears at bottom due to flex alignment)
+            boxShadow: `0 0 15px ${glowColor}`, // Removed inset shadow
+            opacity: darkMode ? 0.75 : 0.65, // Increased opacity to make it more visible
+            backgroundColor: 'transparent', // No background since we only want the line
+            transition: 'all 0.8s cubic-bezier(0.4, 0.0, 0.2, 1)'
+          }}
+        />
+      </div>
 
       <div className="container mx-auto px-4 flex justify-center items-center relative z-10 h-full">
         <div className="w-full mb-[25vh] flex justify-between items-center">

@@ -75,3 +75,26 @@ function addVariablesForColors({ addBase, theme }) {
     ":root": newVars,
   });
 }
+
+module.exports = {
+  theme: {
+    extend: {
+      keyframes: {
+        'slide-up': {
+          '0%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-20%)' },
+          '100%': { transform: 'translateY(0)' },
+        },
+        'slide-down': {
+          '0%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(20%)' },
+          '100%': { transform: 'translateY(0)' },
+        },
+      },
+      animation: {
+        'slide-up': 'slide-up 2.5s ease-in-out',
+        'slide-down': 'slide-down 2.5s ease-in-out',
+      },
+    },
+  },
+}

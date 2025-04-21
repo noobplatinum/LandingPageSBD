@@ -7,9 +7,6 @@ const GlobeImplementation: React.FC = () => {
     const { darkMode } = useTheme();
     return(
         <div className="w-[90vw] max-w-7xl flex flex-col justify-center items-center gap-8">
-            <h2 className={`text-4xl font-bold text-center ${darkMode ? 'text-white' : 'text-gray-800'}`}>
-              Open for Opportunities!
-            </h2>
             <div
               className="w-full aspect-square max-w-[750px] overflow-visible transition-opacity duration-500"
               key={`globe-${darkMode}`}
