@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useTheme } from '../lib/ThemeContext';
 import vjacket from '../assets/vjacket.jpg';
 import headphones from '../assets/headphones.jpg';
@@ -27,7 +27,6 @@ const formatToRupiah = (value: number): string => {
 
 const ProjectsBox = () => {
   const { darkMode } = useTheme();
-  const [activeTab, setActiveTab] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const boxRef = useRef(null);
 

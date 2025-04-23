@@ -6,7 +6,7 @@ const ScrollProgressTracker = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [displayProgress, setDisplayProgress] = useState(0);
   const [documentHeight, setDocumentHeight] = useState(0);
-  const [scrollingDown, setScrollingDown] = useState(true);
+  const [, setScrollingDown] = useState(true);
   const prevScrollRef = useRef(0);
   const lastScrollTimeRef = useRef(0);
   const animationRef = useRef<number | null>(null);
@@ -95,16 +95,6 @@ const ScrollProgressTracker = () => {
   const glowColor = darkMode ? 'bg-amber-300' : 'bg-purple-600';
   const borderColor = darkMode ? 'border-gray-600' : 'border-gray-300';
   const shadowColor = darkMode ? 'rgba(251, 191, 36, 0.6)' : 'rgba(168, 85, 247, 0.4)';
-  
-  const lineGlowStyle = darkMode 
-    ? { 
-        filter: 'drop-shadow(0 0 4px rgba(251, 191, 36, 0.6)) drop-shadow(0 0 8px rgba(251, 191, 36, 0.4))',
-        transition: 'filter 0.8s cubic-bezier(0.4, 0.0, 0.2, 1), background-color 0.8s cubic-bezier(0.4, 0.0, 0.2, 1)'
-      }
-    : { 
-        filter: 'drop-shadow(0 0 3px rgba(168, 85, 247, 0.3))',
-        transition: 'filter 0.8s cubic-bezier(0.4, 0.0, 0.2, 1), background-color 0.8s cubic-bezier(0.4, 0.0, 0.2, 1)'
-      };
 
   const themeTransitionClass = themeTransition ? 'animate-color-shift' : '';
 

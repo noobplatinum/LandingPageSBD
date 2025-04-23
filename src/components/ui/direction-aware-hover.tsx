@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
@@ -9,9 +9,6 @@ export const DirectionAwareHover = ({
   imageClassName,
   className,
   maintainAspectRatio = true,
-  scale,
-  maxHeight,
-  maxWidth,
 }: {
   imageUrl: string;
   children: React.ReactNode | string;
@@ -24,8 +21,6 @@ export const DirectionAwareHover = ({
   maxWidth?: string;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLImageElement>(null);
-
   const [direction, setDirection] = useState<
     "top" | "bottom" | "left" | "right" | string
   >("left");
