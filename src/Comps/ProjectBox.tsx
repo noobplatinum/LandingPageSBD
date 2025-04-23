@@ -1,5 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useTheme } from '../lib/ThemeContext';
+import vjacket from '../assets/vjacket.jpg';
+import headphones from '../assets/headphones.jpg';
+import ctable from '../assets/ctable.jpg';
 
 // Product type definition for featured products
 interface FeaturedProduct {
@@ -13,6 +16,14 @@ interface FeaturedProduct {
   condition: string;
   imageUrl: string;
 }
+
+// Tambahkan fungsi utilitas untuk memformat angka ke Rupiah
+const formatToRupiah = (value: number): string => {
+  return new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+  }).format(value);
+};
 
 const ProjectsBox = () => {
   const { darkMode } = useTheme();
@@ -47,34 +58,34 @@ const ProjectsBox = () => {
       id: 1,
       name: "Vintage Leather Jacket",
       category: "Clothing",
-      description: "Authentic leather jacket from the 90s in excellent condition. Perfect for casual or evening wear.",
-      price: 79.99,
-      originalPrice: 199.99,
+      description: "Jaket kulit tahun 90an, masih mulus dan terawat tanpa robek atau noda.",
+      price: 79000,
+      originalPrice: 199000,
       discount: 60,
       condition: "Excellent",
-      imageUrl: "https://placehold.co/600x400?text=Vintage+Jacket"
+      imageUrl: vjacket
     },
     {
       id: 2,
       name: "Sony WH-1000XM4 Headphones",
       category: "Electronics",
-      description: "Premium noise-cancelling headphones with minimal use. Includes original packaging and accessories.",
-      price: 189.99,
-      originalPrice: 349.99,
+      description: "Headphone kualitas tinggi dengan noise-cancelling, lengkap dengan aksesoris bawaan pabrik.",
+      price: 189000,
+      originalPrice: 349000,
       discount: 46,
       condition: "Like New",
-      imageUrl: "https://placehold.co/600x400?text=Sony+Headphones"
+      imageUrl: headphones
     },
     {
       id: 3,
       name: "Mid-Century Coffee Table",
       category: "Furniture",
-      description: "Solid wood coffee table with mid-century modern design. Some minor scratches but structurally perfect.",
-      price: 119.99,
-      originalPrice: 299.99,
+      description: "Meja kopi tema lawas, baru dipakai sekitar sebulan, kondisi sangat baik dan tidak keropos",
+      price: 1190000,
+      originalPrice: 2990000,
       discount: 60,
       condition: "Good",
-      imageUrl: "https://placehold.co/600x400?text=Coffee+Table"
+      imageUrl: ctable
     }
   ];
 
@@ -133,10 +144,10 @@ const ProjectsBox = () => {
               <div className="flex items-end justify-between">
                 <div>
                   <p className={`text-lg font-bold ${darkMode ? 'text-amber-300' : 'text-purple-600'}`}>
-                    ${product.price.toFixed(2)}
+                    {formatToRupiah(product.price)}
                   </p>
                   <p className="text-xs line-through opacity-70">
-                    ${product.originalPrice.toFixed(2)}
+                    {formatToRupiah(product.originalPrice)}
                   </p>
                 </div>
                 

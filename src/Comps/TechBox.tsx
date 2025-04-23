@@ -17,7 +17,7 @@ interface ServiceItem {
 const TechStack: React.FC = () => {
   const { darkMode } = useTheme();
   const [selectedService, setSelectedService] = useState<string | null>(null);
-  const [displayTitle, setDisplayTitle] = useState<string>("What We Offer");
+  const [displayTitle, setDisplayTitle] = useState<string>("Klik Tombol-Tombol Ini!");
   const [isAnimating, setIsAnimating] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const boxRef = useRef<HTMLDivElement>(null);
@@ -72,42 +72,42 @@ const TechStack: React.FC = () => {
     { 
       name: 'Free Delivery', 
       icon: <FaTruck size={42} />,
-      description: 'Free local delivery on orders over $50'
+      description: 'Gratis ongkir untuk pembelian di atas Rp 100.000'
     },
     { 
       name: 'Eco-Friendly', 
       icon: <FaRecycle size={42} />,
-      description: 'Supporting sustainable shopping practices'
+      description: 'Mendukung kesehatan lingkungan dan ekosistem'
     },
     { 
       name: 'Quality Verified', 
       icon: <FaCertificate size={42} />,
-      description: 'All items inspected and tested before listing'
+      description: 'Aman dari produk palsu dan penipuan'
     },
     { 
       name: 'Seller Ratings', 
       icon: <FaHandshake size={42} />,
-      description: 'Trusted seller community with reviews'
+      description: 'Seller terpercaya dengan rating tinggi'
     },
     { 
       name: 'Buyer Protection', 
       icon: <FaShieldAlt size={42} />,
-      description: '30-day return policy on eligible items'
+      description: 'Kebijakan pengembalian barang terjamin'
     },
     { 
       name: 'Great Deals', 
       icon: <FaTag size={42} />,
-      description: 'Save up to 70% compared to retail prices'
+      description: 'Harga banting dibanding toko lain'
     },
     { 
       name: 'Repair Service', 
       icon: <FaTools size={42} />,
-      description: 'Optional repair services for select items'
+      description: 'Perbaikan barang dengan garansi'
     },
     { 
       name: 'Trade-In Options', 
       icon: <FaExchangeAlt size={42} />,
-      description: 'Trade your items for store credit'
+      description: 'Fasilitas tukar tambah untuk barang elektronik'
     }
   ];
 
@@ -177,7 +177,7 @@ const TechStack: React.FC = () => {
     >
       <div className="flex flex-col items-center justify-center">
         <h2 className={`text-4xl font-bold text-center mb-8 ${darkMode ? 'text-amber-300' : 'text-purple-600'}`}>
-          What Sets Us Apart
+          Keunggulan Kami
         </h2>
 
         <div className="relative h-20 mb-6 flex items-center justify-center overflow-hidden w-full">

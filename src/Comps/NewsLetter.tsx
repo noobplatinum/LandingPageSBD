@@ -28,11 +28,11 @@ const Newsletter: React.FC = () => {
           <h2 className={`text-3xl font-bold mb-4 ${
             darkMode ? 'text-amber-300' : 'text-purple-600'
           }`}>
-            Get Exclusive Deals
+            Penawaran Eksklusif Di Sini!
           </h2>
           
           <p className={`mb-6 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-            Be the first to know about new arrivals, special promotions, and exclusive deals on second-hand treasures.
+              Temukan berbagai penawaran menarik dan produk berkualitas hanya untuk Anda.
           </p>
           
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -60,12 +60,12 @@ const Newsletter: React.FC = () => {
                     : 'bg-purple-600 text-white hover:bg-purple-700'
               }`}
             >
-              {subscribed ? 'You\'re Subscribed!' : 'Sign Up for Updates'}
+              {subscribed ? 'Terima kasih!' : 'Sign Up'}
             </button>
             
             <div className="mt-2 text-center">
               <small className={darkMode ? 'text-gray-400' : 'text-gray-500'}>
-                No spam, we promise. Unsubscribe any time.
+                Tanpa spam!
               </small>
             </div>
           </form>
@@ -75,7 +75,7 @@ const Newsletter: React.FC = () => {
           <div className="p-6 text-center">
             <div className="text-6xl mb-4">🎁</div>
             <div className="text-xl font-bold text-gray-800">
-              Subscribers get 10% off their first purchase!
+              10% off pembelian pertama Anda
             </div>
           </div>
         </div>

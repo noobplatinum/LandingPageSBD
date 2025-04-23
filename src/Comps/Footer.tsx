@@ -49,12 +49,12 @@ const Footer = () => {
           <h2 className={`text-3xl font-bold mb-2 transition-colors duration-500 ${
             darkMode ? 'text-amber-300' : 'text-purple-600'
           }`}>
-            SecondChance
+            Bukalapak
           </h2>
           <p className={`text-lg transition-colors duration-500 ${
             darkMode ? 'text-white' : 'text-gray-700'
           }`}>
-            <i>Quality Finds, Second Life</i>
+            <i>Belanja Aman dan Terpercaya</i>
           </p>
         </div>
         
@@ -73,7 +73,7 @@ const Footer = () => {
             </div>
           </div>
           <p className={`text-xs text-center mt-2 ${darkMode ? 'text-amber-200/70' : 'text-purple-500/70'}`}>
-            © 2025 SecondChance
+            © 2025 Bukalapak
           </p>
         </div>
       </div>
