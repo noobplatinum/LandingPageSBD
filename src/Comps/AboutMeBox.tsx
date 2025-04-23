@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTheme } from '../lib/ThemeContext';
 import { FlipWords } from '../components/ui/flip-words';
 import imgpath from '../assets/upscale.png'

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import mainLogo from '../assets/mainlogo.png';
 import GifButton from './GifButton';
 import { BackgroundGradient } from "../components/ui/background-gradient";
@@ -8,8 +8,8 @@ import { FaShoppingCart, FaSearch, FaHeart, FaBars } from 'react-icons/fa';
 const Header = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const { darkMode, toggleDarkMode } = useTheme();
-  const [themeTransition, setThemeTransition] = useState(false);
-
+  const [, setThemeTransition] = useState(false);
+  
   useEffect(() => {
     setThemeTransition(true);
     const timer = setTimeout(() => setThemeTransition(false), 800);

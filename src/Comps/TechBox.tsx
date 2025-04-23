@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useTheme } from '../lib/ThemeContext';
-import { GlowingEffect } from '../components/ui/glowing-effect';
 import LineDecoration from '../components/ui/LineDecoration';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -17,12 +16,12 @@ interface ServiceItem {
 const TechStack: React.FC = () => {
   const { darkMode } = useTheme();
   const [selectedService, setSelectedService] = useState<string | null>(null);
-  const [displayTitle, setDisplayTitle] = useState<string>("Klik Tombol-Tombol Ini!");
+  const [displayTitle] = useState<string>("Klik Tombol-Tombol Ini!");
   const [isAnimating, setIsAnimating] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const boxRef = useRef<HTMLDivElement>(null);
-  const [titleGlowIntensity, setTitleGlowIntensity] = useState(0);
-  const [activeGlow, setActiveGlow] = useState<string | null>(null);
+  const [titleGlowIntensity] = useState(0);
+  const [activeGlow] = useState<string | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -118,31 +117,6 @@ const TechStack: React.FC = () => {
 
     setSelectedService(serviceName);
     
-    const service = serviceItems.find(item => item.name === serviceName);
-    const description = service ? service.description : '';
-
-    const t1 = setTimeout(() => {
-      setDisplayTitle(description);
-
-      const t2 = setTimeout(() => {
-        setTitleGlowIntensity(1); 
-
-        const t3 = setTimeout(() => {
-          setActiveGlow(serviceName);
-        }, 100);
-
-        const t4 = setTimeout(() => {
-          setTitleGlowIntensity(0); 
-          setActiveGlow(null); 
-
-          const t5 = setTimeout(() => {
-            setDisplayTitle("What We Offer");
-            setSelectedService(null);
-            setIsAnimating(false); 
-          }, 300);
-        }, 3000);
-      }, 500);
-    }, 300);
   };
 
   const titleVariants = {
