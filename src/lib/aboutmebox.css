@@ -1,0 +1,253 @@
+.about-box {
+    position: relative;
+    width: 100%;
+    min-height: 450px; /* Increased height */
+    border-radius: 16px;
+    padding: 2.5rem;
+    backdrop-filter: blur(8px);
+    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out, background-color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+    overflow: hidden;
+    box-sizing: border-box;
+    transform-style: preserve-3d;
+    border: 1px solid;
+  }
+  
+  .about-box.box-hidden {
+    opacity: 0 !important;
+    transform: translateY(40px) !important;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out !important;
+  }
+  
+  .about-box.box-visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out !important;
+    will-change: opacity, transform;
+  }
+  
+  .light-box {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(148, 105, 190, 0.3);
+    box-shadow: 
+      0 4px 30px rgba(0, 0, 0, 0.1),
+      0 0 15px rgba(148, 105, 190, 0.2);
+    color: #333;
+  }
+  
+  .dark-box {
+    background-color: rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 193, 7, 0.3); 
+    box-shadow: 
+      0 4px 30px rgba(0, 0, 0, 0.2),
+      0 0 15px rgba(255, 193, 7, 0.2);
+    color: #f1f1f1;
+  }
+  
+  .box-hidden {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  
+  .box-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Slightly longer for appearing */
+  }
+
+  .about-content {
+    position: relative;
+    z-index: 2; /* Higher z-index to stay above Jupiter image */
+  }
+  
+  /* Style for the developer name */
+  .dev-name {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+    transition: color 0.8s ease-in-out;
+  }
+  
+  .interest-container {
+    display: flex;
+    align-items: baseline; /* Better alignment */
+    gap: 0.1px;
+    margin-bottom: 1.5rem;
+    flex-wrap: nowrap; /* Prevent wrapping */
+  }
+  
+  .interest-prefix {
+    font-size: 1.25rem;
+    font-weight: 500;
+    white-space: nowrap; /* Prevent wrapping */
+  }
+  
+  .interest-words {
+    font-size: 1.25rem;
+    font-weight: 600;
+    min-width: 200px;
+    min-height: 30px; /* Ensure consistent height during animations */
+  }
+  
+  .about-divider {
+    height: 2px;
+    width: 60px;
+    margin-bottom: 1.5rem;
+    transition: background-color 0.8s ease-in-out;
+  }
+  
+  .light-box .about-divider {
+    background-color: rgba(148, 105, 190, 0.5);
+  }
+  
+  .dark-box .about-divider {
+    background-color: rgba(255, 193, 7, 0.5);
+  }
+  
+  .about-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    transition: color 0.8s ease-in-out;
+  }
+  
+  /* Jupiter image styling */
+  .jupiter-container {
+    position: absolute;
+    bottom: -250px;
+    right: -250px;
+    width: 750px; /* Much larger (300%) */
+    height: 750px;
+    z-index: 1;
+    transition: opacity 0.8s ease-in-out;
+  }
+  
+  .jupiter-image {
+    width: 100%;
+    height: auto;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .jupiter-container {
+      width: 450px; /* Smaller but still large on mobile */
+      height: 450px;
+      bottom: -150px;
+      right: -150px;
+    }
+  }
+  
+  /* Jupiter image appears with a delay after the box becomes visible */
+  
+  .box-visible .jupiter-container {
+    transition-delay: 0.4s;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .about-box {
+      min-height: 350px;
+      padding: 1.5rem;
+    }
+    
+    .dev-name {
+      font-size: 2rem;
+    }
+    
+    .interest-container {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+    }
+    
+    .jupiter-container {
+      width: 150px;
+      height: 150px;
+      bottom: -50px;
+      right: -50px;
+    }
+  }
+
+  .theme-transition-text {
+    transition: color 0.8s ease-in-out;
+  }
+  
+  /* For Tailwind amber color in dark mode */
+  .dark-mode-text {
+    color: #fcd34d; /* amber-300 equivalent */
+  }
+  
+  /* For Tailwind purple color in light mode */
+  .light-mode-text {
+    color: #9333ea; /* purple-600 equivalent */
+  }
+
+  .jupiter-hidden {
+    opacity: 0 !important; /* Use !important to override mode-specific opacity */
+  }
+  
+  .jupiter-visible {
+    /* opacity is handled by light/dark mode classes */
+    transition-delay: 0.4s;
+  }
+
+  .mail-button {
+    position: absolute;
+    top: 20px; /* Changed from bottom to top */
+    right: 20px;
+    width: 52px; /* Slightly increased from 48px */
+    height: 52px; /* Slightly increased from 48px */
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid;
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    transform: translateY(-20px); /* Changed from translateY(20px) to come from top */
+    padding: 0; /* Ensure no padding interferes with icon sizing */
+  }
+
+.light-mail-button {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(148, 105, 190, 0.4);
+  color: #9333ea; /* purple-600 to match your theme */
+  box-shadow: 0 2px 10px rgba(148, 105, 190, 0.3);
+}
+
+.dark-mail-button {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 193, 7, 0.4);
+  color: #fcd34d; /* amber-300 to match your theme */
+  box-shadow: 0 2px 10px rgba(255, 193, 7, 0.3);
+}
+
+.mail-button:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+.light-mail-button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 15px rgba(148, 105, 190, 0.4);
+}
+
+.dark-mail-button:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+}
+
+/* Animation for the mail button - updated for top position */
+.mail-button-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition-delay: 0.7s; /* Appear after the box animation */
+}
+
+.mail-button-hidden {
+  opacity: 0;
+  transform: translateY(-20px); /* Changed to move up when hiding */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
