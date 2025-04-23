@@ -1,103 +1,64 @@
 import './App.css';
 import Header from './Comps/Header';
-import { MaskContainer } from './components/ui/svg-mask-effect';
 import { AuroraBackground } from './components/ui/aurora-background';
 import ScrollProgressTracker from './components/ui/ScrollProgressTracker';
 import { ThemeProvider, useTheme } from './lib/ThemeContext';
-import Profile from './Comps/Profile';
-import LineDecoration from './components/ui/LineDecoration';
+import Footer from './Comps/Footer';
+import ProductGrid from './Comps/ProductGrid';
+import Newsletter from './Comps/NewsLetter';
 import AboutMeBox from './Comps/AboutMeBox';
-import ExperienceBox from './Comps/ExperienceBox';
-import Timeline from './Comps/Timeline';
 import ProjectsBox from './Comps/ProjectBox';
 import TechStack from './Comps/TechBox';
-import GlobeImplementation from './components/ui/GlobeImplementation';
-import Footer from './Comps/Footer';
 
 const AppContent = () => {
   const { darkMode } = useTheme();
+  
+  const carouselImages = [
+    "https://images.unsplash.com/photo-1562016600-ece13e8ba570?q=80&w=1920&auto=format",
+    "https://images.unsplash.com/photo-1604176424472-53566796a243?q=80&w=1920&auto=format",
+    "https://images.unsplash.com/photo-1505731110654-99d7f7f8e39c?q=80&w=1920&auto=format"
+  ];
 
   return (
     <AuroraBackground darkMode={darkMode}>
       <div className={`flex flex-col min-h-screen w-full ${darkMode ? 'dark' : ''}`}>
         <Header />
         <ScrollProgressTracker />
+
         <main className="flex flex-col items-center">
-          <div className="w-[70vw] overflow-hidden mt-[5vh]">
-            <LineDecoration
-              className="mb-[1.5vh]"
-              color={darkMode ? "white" : "black"}
-            />
-
-            <MaskContainer
-              revealText={
-                <p className={`mx-auto max-w-4xl text-center text-4xl font-bold transition-colors duration-500 ${darkMode ? 'text-white' : 'text-slate-800'}`}>
-                  The first rule of MRR Club is you do not talk about MRR Club. The
-                  second rule of MRR Club is you DO NOT talk about MRR Club.
-                </p>
-              }
-              className="w-full h-[30vh] rounded-md border-transparent"
-            >
-              Discover the power of{" "}
-              <span className={darkMode ? "text-amber-400" : "text-purple-600"}>modern UIs</span> with native CSS
-              variables and container queries with{" "}
-              <span className={darkMode ? "text-amber-400" : "text-purple-600"}>advanced animations</span>.
-            </MaskContainer>
-
-            <LineDecoration
-              className="mt-[1.5vh]"
-              color={darkMode ? "white" : "black"}
-            />
-          </div>
-
-          <div className="w-[90vw] max-w-7xl mt-[6vh] flex flex-col md:flex-row justify-center items-center gap-8">
-            <div className="md:w-[90%]">
-              <AboutMeBox />
-            </div>
-            <div className="md:w-[40%] flex justify-center">
-              <Profile />
-            </div>
-          </div>
-
-          <div className="w-[90vw] max-w-7xl mt-[6vh] flex flex-col md:flex-row justify-center items-center gap-8">
-            <ExperienceBox
-              title="A Brief Overview"
-              paragraphs={[
-                "With over 5 years of experience in software development...",
-                "I hold a Bachelor's degree in Computer Science..."
-              ]}
-              cvLink="https://drive.google.com/your-cv-link"
-            />
-          </div>
-
-          <div className="w-[70vw] flex justify-center items-center mt-[6vh]">
-            <div className="w-[85vw] max-w-7xl mt-[12vh] mb-[6vh]">
-              <h2 className={`text-4xl font-bold text-center mb-8 ${darkMode ? 'text-white' : 'text-gray-800'}`}>              My Journey
-              </h2>
-              <Timeline />
-              <GlobeImplementation/>
-            </div>
+          <div id="aboutMe" className="w-[90vw] max-w-7xl mt-[6vh] flex flex-col md:flex-row justify-center items-center gap-8 scroll-mt-24">
+            <AboutMeBox />
           </div>
 
           <div className="w-[90vw] max-w-7xl mt-[6vh] flex flex-col justify-center items-center gap-8">
-            <h2 className={`text-4xl font-bold text-center mb-8 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
-              My Projects
+            <h2 className={`text-4xl font-bold text-center mb-8 ${darkMode ? 'text-amber-300' : 'text-purple-600'}`}>
+              Featured Products
             </h2>
             <ProjectsBox />
           </div>
 
-          <div className='h-[100px]'></div>
+          <div className='h-[60px]'></div>
           <TechStack />
-          <div className='h-[100px]'></div>
+          <div className='h-[60px]'></div>
 
-          <div className="w-[90vw] max-w-7xl flex flex-col md:flex-row justify-center items-center gap-0">
+          <div id="browseItems" className="w-[90vw] max-w-7xl mt-[6vh] flex flex-col justify-center items-center gap-8 scroll-mt-24">
+            <h2 className={`text-4xl font-bold text-center mb-8 ${darkMode ? 'text-amber-300' : 'text-purple-600'}`}>
+              Browse All Items
+            </h2>
+            <ProductGrid />
+          </div>
+
+          <div id="newsletter" className="w-[90vw] max-w-7xl mt-[8vh] flex flex-col justify-center items-center scroll-mt-24">
+            <Newsletter />
+          </div>
+
+          <div className="w-[90vw] max-w-7xl flex flex-col md:flex-row justify-center items-center gap-0 mt-[8vh]">
             <div className="md:w-[90%]">
               <Footer />
             </div>
           </div>
 
-          <div className="h-[100px]"></div>
-
+          <div className="h-[50px]"></div>
         </main>
       </div>
     </AuroraBackground>

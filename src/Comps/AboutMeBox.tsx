@@ -1,26 +1,24 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useTheme } from '../lib/ThemeContext';
-import '../lib/aboutmebox.css';
-import { FlipWords } from '../components/ui/flip-words'; // Import the FlipWords component
-import jupiterImage from '../assets/jupiter.png';
-import { Mails } from 'lucide-react'; // Import the Mail icon from lucide-react
+import { FlipWords } from '../components/ui/flip-words';
+import imgpath from '../assets/upscale.png'
 
 const AboutMeBox = () => {
   const [isVisible, setIsVisible] = useState(false);
   const boxRef = useRef(null);
   const { darkMode } = useTheme();
 
-  const interestsList = [
-    "Web / App Development",
-    "Robotics / Avionics",
-    "Machine Learning / AI",
-    "Digital Sys / Arc"
+  const categoryList = [
+    "Electronics",
+    "Furniture",
+    "Clothing",
+    "Books",
+    "Collectibles"
   ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // Update visibility based on 50% threshold
         setIsVisible(entry.isIntersecting && entry.intersectionRatio >= 0.5);
       },
       {
@@ -41,43 +39,54 @@ const AboutMeBox = () => {
   }, []);
 
   return (
-    <div ref={boxRef} className={`about-box ${darkMode ? 'dark-box' : 'light-box'} ${isVisible ? 'box-visible' : 'box-hidden'}`}>
-      <div className="about-content">
-        <h1 className={`dev-name theme-transition-text ${darkMode ? 'dark-mode-text' : 'light-mode-text'}`}>
-          John Smith
-        </h1>
-        
-        <div className="interest-container">
-          <span className="interest-prefix">Passionate in</span>
-          <FlipWords 
-            words={interestsList} 
-            duration={5000}
-            className={`interest-words theme-transition-text ${darkMode ? 'dark-mode-text' : 'light-mode-text'}`} 
-          />
+    <div ref={boxRef} className={`w-full p-8 rounded-lg shadow-lg ${darkMode ? 'bg-gray-800' : 'bg-white'} ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} transition-all duration-700`}>
+      <div className="flex flex-col md:flex-row gap-8">
+        <div className="md:w-3/5">
+          <h1 className={`text-4xl md:text-5xl font-bold mb-4 transition-colors duration-500 ${darkMode ? 'text-amber-300' : 'text-purple-600'}`}>
+            Jual Beli Online Terpercaya
+          </h1>
+          
+          <div className="flex items-center mb-6">
+            <span className="text-xl mr-2">Find quality</span>
+            <FlipWords 
+              words={categoryList}
+              duration={2000}
+              className={`text-xl font-semibold ${darkMode ? 'text-amber-300' : 'text-purple-600'}`}
+            />
+          </div>
+          
+          <p className={`text-lg mb-6 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+            Bukalapak mengutamakan keamanan dan kenyamanan dalam bertransaksi. Bekas maupun baru, kepuasan Anda terjamin!
+          </p>
+          
+          <div className="flex gap-4">
+            <button className={`px-6 py-2 rounded-lg transition ${
+              darkMode 
+                ? 'bg-amber-400 text-black hover:bg-amber-500' 
+                : 'bg-purple-600 text-white hover:bg-purple-700'
+            }`}>
+              Shop Now
+            </button>
+            <button className={`px-6 py-2 rounded-lg border transition ${
+              darkMode 
+                ? 'border-amber-300/50 text-amber-300 hover:bg-amber-400/10' 
+                : 'border-purple-600/50 text-purple-600 hover:bg-purple-600/10'
+            }`}>
+              Learn More
+            </button>
+          </div>
         </div>
         
-        <div className="about-divider"></div>
-        
-        <p className="about-text">
-          I'm a passionate developer focused on creating beautiful, responsive, and performant web applications.
-          With experience in React, TypeScript, and modern CSS techniques, I bring designs to life with subtle
-          animations and thoughtful interactions.
-        </p>
-        <p className="about-text mt-4">
-          When I'm not coding, you might find me exploring new technologies, contributing to open source,
-          or thinking about how to make the web more accessible and enjoyable for everyone.
-        </p>
-      </div>
-      
-      <button 
-        className={`mail-button ${darkMode ? 'dark-mail-button' : 'light-mail-button'} ${isVisible ? 'mail-button-visible' : 'mail-button-hidden'}`}
-        aria-label="Contact me"
-      >
-        <Mails size={24} />
-      </button>
-      
-      <div className={`jupiter-container ${isVisible ? 'jupiter-visible' : 'jupiter-hidden'}`} style={{ opacity: isVisible ? (darkMode ? 0.4 : 0.15) : 0 }}>
-        <img src={jupiterImage} alt="Jupiter" className="jupiter-image" />
+        <div className="md:w-2/5 flex justify-center items-center">
+            <div className={`w-64 h-64 rounded-full overflow-hidden border-4 p-4 ${
+            darkMode ? 'border-amber-300/30' : 'border-purple-600/30'
+            }`}>
+            <img 
+              src={imgpath}
+              className="w-full h-full object-cover"
+            />
+            </div>
+        </div>
       </div>
     </div>
   );

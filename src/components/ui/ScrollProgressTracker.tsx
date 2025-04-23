@@ -86,21 +86,16 @@ const ScrollProgressTracker = () => {
     };
   }, [scrollProgress]);
   
-  // Adjust thresholds to reduce transition frequency
   const topDiamondActive = displayProgress > 0.025;
   const bottomDiamondActive = displayProgress >= 0.95;
   
-  // Track color remains the same
   const trackColor = darkMode ? 'bg-gray-700/50' : 'bg-gray-300/50';
-  
-  // Colors for light mode remain the same
-  // Colors for dark mode changed to orange-yellow
+
   const progressColor = darkMode ? 'bg-amber-400' : 'bg-purple-500';
   const glowColor = darkMode ? 'bg-amber-300' : 'bg-purple-600';
   const borderColor = darkMode ? 'border-gray-600' : 'border-gray-300';
   const shadowColor = darkMode ? 'rgba(251, 191, 36, 0.6)' : 'rgba(168, 85, 247, 0.4)';
   
-  // Enhanced glow for both modes - stronger for dark mode, subtle for light mode
   const lineGlowStyle = darkMode 
     ? { 
         filter: 'drop-shadow(0 0 4px rgba(251, 191, 36, 0.6)) drop-shadow(0 0 8px rgba(251, 191, 36, 0.4))',
@@ -111,15 +106,12 @@ const ScrollProgressTracker = () => {
         transition: 'filter 0.8s cubic-bezier(0.4, 0.0, 0.2, 1), background-color 0.8s cubic-bezier(0.4, 0.0, 0.2, 1)'
       };
 
-  // Special animation class for theme transition
   const themeTransitionClass = themeTransition ? 'animate-color-shift' : '';
 
   return (
-    <div className="absolute left-[2vw] top-0 z-40 pointer-events-none" style={{ height: documentHeight }}>
+  <div className="absolute left-[2vw] top-0 z-40 pointer-events-none hidden sm:block" style={{ height: documentHeight }}>
       <div className="h-full flex flex-col items-center justify-between py-8">
-        {/* Top Diamond - simplified transitions */}
         <div className={`w-6 h-6 relative ${themeTransitionClass}`}>
-          {/* Enhanced glow effects for both modes */}
           <div 
             className={`absolute inset-0 ${glowColor} blur-lg transform scale-[2.2] rotate-45 rounded-lg transition-all duration-800 ${
               topDiamondActive ? (darkMode ? 'opacity-40' : 'opacity-30') : 'opacity-0'
@@ -127,7 +119,6 @@ const ScrollProgressTracker = () => {
             style={{ transition: 'opacity 0.7s ease, background-color 0.8s cubic-bezier(0.4, 0.0, 0.2, 1)' }}
           />
           
-          {/* Main diamond shape with will-change for GPU acceleration */}
           <div 
             className={`absolute inset-0 transform rotate-45 rounded-lg transition-all duration-700 will-change-transform ${
               topDiamondActive 
@@ -138,7 +129,6 @@ const ScrollProgressTracker = () => {
           />
         </div>
         
-        {/* Line with progress overlay - spans full height */}
         <div className="relative flex-grow w-0.5 mx-auto my-4">
           <div className={`absolute top-0 left-0 w-full h-full ${trackColor} transition-colors duration-800`} />
           <div 
@@ -154,7 +144,6 @@ const ScrollProgressTracker = () => {
           />
         </div>
         
-        {/* Bottom Diamond - simplified transitions */}
         <div className={`w-6 h-6 relative ${themeTransitionClass}`}>
           <div 
             className={`absolute inset-0 ${glowColor} blur-lg transform scale-[2.2] rotate-45 rounded-lg transition-all duration-800 ${

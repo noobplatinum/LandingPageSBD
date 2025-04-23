@@ -20,15 +20,12 @@ export const BackgroundGradient = ({
 }) => {
   const { darkMode } = useTheme();
   const borderWidthValue = parseInt(borderWidth);
-  // Force component remount when theme changes
   const [key, setKey] = useState(Date.now());
 
-  // Reset key when theme changes to force remount
   useEffect(() => {
     setKey(Date.now());
   }, [darkMode]);
   
-  // Glow intensity and colors based on theme
   const defaultGlowOpacity = darkMode ? 0.25 : 0.15;
   const hoverGlowOpacity = darkMode ? 0.45 : 0.25;
   const glowSize = darkMode ? '16px' : '12px';
@@ -38,7 +35,6 @@ export const BackgroundGradient = ({
   
   return (
     <div className={cn("relative group", borderOnly ? "p-0" : "p-[4px]", containerClassName)}>
-      {/* Constant glow effect */}
       <div 
         className={cn("absolute -inset-[8px] rounded-full transition-all duration-500 z-0")}
         style={{
@@ -49,7 +45,6 @@ export const BackgroundGradient = ({
         }}
       />
       
-      {/* Enhanced glow on hover */}
       <div 
         className={cn("absolute -inset-[8px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0")}
         style={{
@@ -87,7 +82,6 @@ export const BackgroundGradient = ({
             className="z-[1]"
           />
           
-          {/* Border glow effect */}
           <div 
             className="absolute inset-0 rounded-full z-0"
             style={{
