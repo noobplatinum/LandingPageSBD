@@ -1,3 +1,4 @@
+
 import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
@@ -27,7 +28,6 @@ export const BackgroundGradient = ({
   }, [darkMode]);
   
   const defaultGlowOpacity = darkMode ? 0.25 : 0.15;
-  const hoverGlowOpacity = darkMode ? 0.45 : 0.25;
   const glowSize = darkMode ? '16px' : '12px';
   const glowColors = darkMode 
     ? "rgba(255, 196, 20, 0.6), rgba(251, 191, 36, 0.5), rgba(245, 158, 11, 0.5)" 
